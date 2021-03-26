@@ -5,9 +5,7 @@ function go() {
   url = location.href;
   if (url.includes("meet.google.com")) {
     its_meet();
-  } else if (url.includes("teams.microsoft.com")) {
-    its_team();
-  } else {
+  }  else {
     console.log("Not my cup of coffee ☕ : automatic joiner extention 💣 ");
   }
 }
@@ -16,19 +14,17 @@ function its_meet() {
   setTimeout(function() {
     items = document.getElementsByTagName('div');
     loop();
-  }, 2000);
+  }, 3000);
 
   // turn off camera and microphone
   function loop() {
     setTimeout(function() {
       try {
-        //alert(items.length);
         for (i = 0; i < items.length; i++) {
           if (items[i].hasAttribute("aria-label")) {
             if (items[i].getAttribute("aria-label").includes("microphone") || items[i].getAttribute("aria-label").includes("camera")) {
               items[i].click();
               flag1 = true;
-              //alert("clicked");
             }
           }
         }
@@ -49,7 +45,7 @@ function its_meet() {
         if (items[i].hasAttribute("jsname")) {
           if (items[i].getAttribute("jsname").includes("Qx7uuf")) {
             items[i].click();
-            //alert("Ask to join");
+            flag2 = true; 
           }
         }
       }
@@ -58,10 +54,6 @@ function its_meet() {
       }
     }, 2000);
   }
-}
-
-function its_team() {
-  console.log("May be work later on it!! 🚀");
 }
 
 go();
